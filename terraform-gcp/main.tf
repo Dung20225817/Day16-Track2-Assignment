@@ -126,10 +126,7 @@ resource "google_compute_instance" "gpu_node" {
     scopes = ["cloud-platform"]
   }
 
-  metadata_startup_script = templatefile("${path.module}/user_data.sh", {
-    hf_token = var.hf_token
-    model_id = var.model_id
-  })
+  metadata_startup_script = file("${path.module}/startup.sh")
 
   metadata = {
     enable-oslogin = "TRUE"
@@ -147,6 +144,10 @@ resource "google_compute_instance_group" "gpu_group" {
   named_port {
     name = "vllm"
     port = 8000
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 

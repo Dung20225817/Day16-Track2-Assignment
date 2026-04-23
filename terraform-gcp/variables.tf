@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "GCP Project ID"
   type        = string
+  default     = "lab16-ai-deploy-2024"
 }
 
 variable "region" {
@@ -12,7 +13,7 @@ variable "region" {
 variable "zone" {
   description = "GCP Zone"
   type        = string
-  default     = "us-central1-a"
+  default     = "us-central1-f"
 }
 
 variable "hf_token" {
@@ -31,7 +32,7 @@ variable "model_id" {
 variable "machine_type" {
   description = "GCE Machine Type. GPU: n1-standard-4 | CPU fallback: n2-standard-8"
   type        = string
-  default     = "n2-standard-8"  # CPU fallback (no GPU quota needed)
+  default     = "n2-highmem-8"   # CPU fallback (no GPU quota needed)
 }
 
 variable "gpu_type" {

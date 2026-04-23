@@ -174,7 +174,7 @@ result = {
     "recall"              : round(recall, 6),
     "inference_1row_ms"   : round(lat_1row, 3),
     "inference_1000rows_ms": round(lat_1000rows, 3),
-    "timestamp"           : time.strftime("%Y-%m-%d %Human:%M:%S"),
+    "timestamp"           : time.strftime("%Y-%m-%d %H:%M:%S"),
 }
 with open(RESULT_FILE, "w") as f:
     json.dump(result, f, indent=2)
