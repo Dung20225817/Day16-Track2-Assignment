@@ -29,19 +29,19 @@ variable "model_id" {
 }
 
 variable "machine_type" {
-  description = "GCE Machine Type for the GPU node"
+  description = "GCE Machine Type. GPU: n1-standard-4 | CPU fallback: n2-standard-8"
   type        = string
-  default     = "n1-standard-4"
+  default     = "n2-standard-8"  # CPU fallback (no GPU quota needed)
 }
 
 variable "gpu_type" {
-  description = "GPU accelerator type"
+  description = "GPU accelerator type (ignored when gpu_count = 0)"
   type        = string
   default     = "nvidia-tesla-t4"
 }
 
 variable "gpu_count" {
-  description = "Number of GPUs to attach"
+  description = "Number of GPUs to attach. Set to 0 for CPU-only mode."
   type        = number
-  default     = 1
+  default     = 0  # 0 = CPU mode (no quota required)
 }
